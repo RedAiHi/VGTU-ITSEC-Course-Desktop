@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+	
+	//AUTHOR: Kšyštof Dunovski (ITSfmu-17)
 
 	public static void main(String[] args) 
-	{
+	{	
 		ArrayList<String> abc = new ArrayList<>();
 		ArrayList<String> rezult = new ArrayList<>();
 		int enc = 0;
