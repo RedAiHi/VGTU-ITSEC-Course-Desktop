@@ -22,6 +22,7 @@ public class Main {
 			abc.add(String.valueOf(c));
 		}
 		
+		//Variable input section
 		System.out.println("Input your string, which you wish to encode with Caesar algorythm");
 		raw_input = sc.nextLine();
 		System.out.println("Input your modifier (any integer)");
@@ -31,13 +32,11 @@ public class Main {
 		System.out.println("Thank you for your input! \nProcessing, please hold on for a moment... \n");
 		input_Arr = raw_input.toCharArray();
 		
+		//Encryption logic
 		System.out.println("The input we got is: " + raw_input);
-		//System.out.println("Modifier: " + enc + "\nArray: ");
 		for(char c : input_Arr)
 		{
 			int index = abc.indexOf(String.valueOf(c));
-			//System.out.println(c + " " + index);
-			
 			try
 			{
 				index = index + enc;
@@ -48,7 +47,6 @@ public class Main {
 				index = index - abc.size();
 			}
 			
-			//System.out.print(c + "   |   " + abc.get(index) + "\n");
 			if(index >= 0)
 			{
 				rezult.add(abc.get(index));
@@ -59,6 +57,7 @@ public class Main {
 			}
 		}
 		
+		//Output logic
 		System.out.println("Result:");
 		
 		for(String s : rezult)
