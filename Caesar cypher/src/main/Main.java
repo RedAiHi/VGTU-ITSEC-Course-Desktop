@@ -39,24 +39,31 @@ public class Main {
 		System.out.println("The input we got is: " + raw_input);
 		for(char c : input_Arr)
 		{
-			int index = abc.indexOf(String.valueOf(c));
-			try
+			if(String.valueOf(c).trim().isEmpty())
 			{
-				index = index + enc;
-				abc.get(index);
-			}
-			catch(IndexOutOfBoundsException e)
-			{
-				index = index - abc.size();
-			}
-			
-			if(index >= 0)
-			{
-				rezult.add(abc.get(index));
+				rezult.add(" ");
 			}
 			else
 			{
-				rezult.add(" ");
+				int index = abc.indexOf(String.valueOf(c));
+				try
+				{
+					index = index + enc;
+					abc.get(index);
+				}
+				catch(IndexOutOfBoundsException e)
+				{
+					index = index - abc.size();
+				}
+				
+				if(index >= 0)
+				{
+					rezult.add(abc.get(index));
+				}
+				else
+				{
+					rezult.add(" ");
+				}
 			}
 		}
 		
