@@ -62,7 +62,8 @@ public class Main {
 				}
 				else
 				{
-					rezult.add(" ");
+					//If unknown character, put "?" symbol
+					rezult.add("?");
 				}
 			}
 		}
