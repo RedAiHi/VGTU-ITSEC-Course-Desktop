@@ -58,6 +58,7 @@ public class Main
 		}
 		System.out.println();
 		
+		//Encoding the message
 		for(ArrayList<String> list : input_arr)
 		{
 			result.add(encode(list, table_arr));
@@ -68,20 +69,14 @@ public class Main
 		{
 			System.out.print(s);
 		}
-		
-//		for(String[] s_y : arr)
-//		{
-//			for(String s_x : s_y)
-//			{
-//				System.out.print(s_x + "   ");
-//			}
-//			System.out.print("\n");
-//		}
-		
-//		System.out.println("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
-//		System.out.println("Old VERSION:");
-//		System.out.println("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
 	}
+	
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//********************************************************************************************//
+	//**************************************Custom Functions**************************************//
+	//********************************************************************************************//
+	////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//Splits the word into an array of pairs according to the Playfair Cypher rules
 	private static void prepare_word(String word_to_encode, ArrayList<ArrayList<String>> arr)
@@ -95,7 +90,6 @@ public class Main
 			ArrayList<String> str = new ArrayList<>();
 			String current_char = String.valueOf(word_arr_temp[i]);
 			str.add(current_char);
-			
 			try
 			{
 				String next_char = String.valueOf(word_arr_temp[i+1]);
@@ -118,6 +112,7 @@ public class Main
 		}
 	}
 	
+	//Finds the coordinates of the given string in the 5x5 matrix
 	private static int[] find_x_y_of(String target, String[][] source)
 	{
 		int[] x_y = new int[2];
@@ -137,6 +132,7 @@ public class Main
 		return null;
 	}
 	
+	//Encodes the pair of letters and gives back the encoded variant of the pair
 	private static String encode(ArrayList<String> list, String[][] table_arr)
 	{
 		String res = "";
@@ -148,9 +144,6 @@ public class Main
 		int j1 = yx1[1];
 		int i2 = yx2[0];
 		int j2 = yx2[1];
-		
-//		System.out.print(list.get(0) + list.get(1) + "   " + 
-//		"\n(" + yx1[0] + ";" + yx1[1] + ")" + "   " + "(" + yx2[0] + ";" + yx2[1] + ")\n");
 		
 		//If same column
 		if(j1 == j2)
