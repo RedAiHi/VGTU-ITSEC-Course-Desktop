@@ -63,6 +63,11 @@ public class Main
 			result.add(encode(list, table_arr));
 		}
 		
+		//Printing final result
+		for(String s : result)
+		{
+			System.out.print(s);
+		}
 		
 //		for(String[] s_y : arr)
 //		{
@@ -152,12 +157,19 @@ public class Main
 		{
 			try
 			{
-				res = table_arr[i1][j1+1] + table_arr[i2][j2+1];
+				res = table_arr[i1+1][j1] + table_arr[i2+1][j2];
+				return res;
 			}
 			//If end of table, wrap around
 			catch(IndexOutOfBoundsException e)
 			{
-				res = table_arr[i1][j1-5+1] + table_arr[i2][j2-5+1];
+				if(i1>5)
+					i1-=5;
+				else
+					i2-=5;
+				
+				res = table_arr[i1+1][j1] + table_arr[i2+1][j2];
+				return res;
 			}
 		}
 		else
@@ -167,12 +179,19 @@ public class Main
 			{
 				try
 				{
-					
+					res = table_arr[i1][j1+1] + table_arr[i2][j2+1];
+					return res;
 				}
 				//If end of table, wrap around
 				catch(IndexOutOfBoundsException e)
 				{
+					if(j1>5)
+						j1-=5;
+					else
+						j2-=5;
 					
+					res = table_arr[i1][j1+1] + table_arr[i2][j2+1];
+					return res;
 				}
 			}
 			else
@@ -180,16 +199,18 @@ public class Main
 				//If rectangle
 				try
 				{
-					
+					res = table_arr[i1][j2] + table_arr[i2][j1];
+					return res;
 				}
 				//If end of table, wrap around
+				//Should be impossible
 				catch(IndexOutOfBoundsException e)
 				{
-					
+					System.out.println("ERROR:Did not fit any rule. Letter combination:" + list.get(0) + list.get(1));
 				}
 			}	
 		}
-		return res;
+		return null;
 	}
 	
 }
