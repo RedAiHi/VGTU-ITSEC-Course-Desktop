@@ -13,6 +13,7 @@ public class Main
 		char[] alphabet = "abcdefghiklmnopqrstuvwxyz".toCharArray();//ignoring j, as per task instructions
 		String[][] table_arr = new String [5][];
 		ArrayList<ArrayList<String>> input_arr = new ArrayList<>();
+		ArrayList<String> result = new ArrayList<>();
 		
 		//Initializing the 5x5 array
 		for(int i=0;i<5;i++)
@@ -59,15 +60,7 @@ public class Main
 		
 		for(ArrayList<String> list : input_arr)
 		{
-			//System.out.print(list.get(0) + list.get(1) + "   ");
-			//int x1=-1, x2=-1, y1=-1, y2=-1;
-			int[] yx1, yx2; 
-			
-			yx1 = find_x_y_of(list.get(0), table_arr);
-			yx2 = find_x_y_of(list.get(1), table_arr);
-			
-			System.out.print(list.get(0) + list.get(1) + "   " + 
-			"\n(" + yx1[0] + ";" + yx1[1] + ")" + "   " + "(" + yx2[0] + ";" + yx2[1] + ")\n");
+			result.add(encode(list, table_arr));
 		}
 		
 		
@@ -138,4 +131,65 @@ public class Main
 		System.out.println("Was Unable to find coordinates of \"" + target + "\"");
 		return null;
 	}
+	
+	private static String encode(ArrayList<String> list, String[][] table_arr)
+	{
+		String res = "";
+		int[] yx1, yx2; 
+		yx1 = find_x_y_of(list.get(0), table_arr);
+		yx2 = find_x_y_of(list.get(1), table_arr);
+		
+		int i1 = yx1[0];
+		int j1 = yx1[1];
+		int i2 = yx2[0];
+		int j2 = yx2[1];
+		
+//		System.out.print(list.get(0) + list.get(1) + "   " + 
+//		"\n(" + yx1[0] + ";" + yx1[1] + ")" + "   " + "(" + yx2[0] + ";" + yx2[1] + ")\n");
+		
+		//If same column
+		if(j1 == j2)
+		{
+			try
+			{
+				res = table_arr[i1][j1+1] + table_arr[i2][j2+1];
+			}
+			//If end of table, wrap around
+			catch(IndexOutOfBoundsException e)
+			{
+				res = table_arr[i1][j1-5+1] + table_arr[i2][j2-5+1];
+			}
+		}
+		else
+		{
+			//If same row
+			if(i1 == i2)
+			{
+				try
+				{
+					
+				}
+				//If end of table, wrap around
+				catch(IndexOutOfBoundsException e)
+				{
+					
+				}
+			}
+			else
+			{
+				//If rectangle
+				try
+				{
+					
+				}
+				//If end of table, wrap around
+				catch(IndexOutOfBoundsException e)
+				{
+					
+				}
+			}	
+		}
+		return res;
+	}
+	
 }
